@@ -47,11 +47,11 @@ impl Lox {
 
     fn run(&self, source: String) {
         use crate::scanner::*;
-        let scanner = Scanner::new(source);
+        let mut scanner = Scanner::new(source);
         // TODO: Remove this debug after scan_tokens is (partly) implemented:w
-        scanner.print_source();
+        //scanner.print_source();
 
-        let tokens: Vec<Token> = scanner.scan_tokens();
+        let tokens: &Vec<Token> = scanner.scan_tokens();
         for token in tokens {
             println!("{:?}", token);
         }
@@ -73,7 +73,7 @@ impl Lox {
 }
 
 #[cfg(test)]
-mod test {
+mod tests {
     use super::*;
 
     #[test]
